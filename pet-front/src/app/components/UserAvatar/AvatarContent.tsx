@@ -26,12 +26,17 @@ export const AvatarContent: FC<AvatarContentProps> = ({ user }) => {
 
   return (
     <div className={styles.Content}>
-      <Descriptions title="User Info" column={1} size="small">
+      <Descriptions column={1} size="small">
         <Descriptions.Item label="ФИО">{user?.fullName}</Descriptions.Item>
         <Descriptions.Item label="Email">{user?.email}</Descriptions.Item>
       </Descriptions>
 
-      <Button type="primary" onClick={onLogoutClick} disabled={loading}>
+      <Button
+        type="primary"
+        onClick={onLogoutClick}
+        disabled={loading}
+        size="small"
+      >
         Выйти
       </Button>
     </div>

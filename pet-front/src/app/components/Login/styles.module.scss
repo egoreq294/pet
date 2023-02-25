@@ -1,12 +1,7 @@
-
 .Form {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.Title{
-    padding: 8px;
 }
 
 .InputContainer {
@@ -18,3 +13,7 @@
     width: 100%;
 }
 
+
+.SubmitButton {
+    margin: 12px 0;
+}

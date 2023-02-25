@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { ERROR_MESSAGES } from './constants';
+import { ERROR_MESSAGES } from '../constants';
 
 export const authSchema = yup.object().shape({
   email: yup

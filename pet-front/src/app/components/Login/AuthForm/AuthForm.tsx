@@ -2,18 +2,23 @@ import React, { FC, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { AuthFormValues } from './types';
 import { yupResolver } from '@hookform/resolvers/yup';
-import styles from './styles.module.scss';
+import styles from '../styles.module.scss';
 import { Button, Input, Typography, Alert } from 'antd';
 import { useAuthContext } from '@app/contexts';
 import { authSchema } from './authSchema';
 import { auth } from '@api/services';
 import { isAxiosError } from 'axios';
+import cn from 'classnames';
 
 interface AuthFormProps {
-  setIsAuthModalOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRegisterModal: React.Dispatch<React.SetStateAction<boolean>>;
+  onCloseModal: () => void;
 }
 
-export const AuthForm: FC<AuthFormProps> = ({ setIsAuthModalOpened }) => {
+export const AuthForm: FC<AuthFormProps> = ({
+  onCloseModal,
+  setIsRegisterModal,
+}) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,7 +43,7 @@ export const AuthForm: FC<AuthFormProps> = ({ setIsAuthModalOpened }) => {
       const response = await auth({ email, password });
       localStorage.setItem('access-token', response.data.accessToken);
       setIsAuth(true);
-      setIsAuthModalOpened(false);
+      onCloseModal();
     } catch (e) {
       if (isAxiosError(e)) {
         setError(
@@ -101,11 +106,29 @@ export const AuthForm: FC<AuthFormProps> = ({ setIsAuthModalOpened }) => {
             <Alert message={error} type="error" showIcon />
           </div>
         )}
-        <div className={styles.InputContainer}>
-          <Button type="primary" block disabled={loading} htmlType="submit">
+
+        <div className={cn(styles.InputContainer, styles.SubmitButton)}>
+          <Button
+            type="primary"
+            block
+            disabled={loading}
+            size="large"
+            htmlType="submit"
+          >
             Авторизоваться
           </Button>
         </div>
+
+        <Button
+          type="link"
+          disabled={loading}
+          size="small"
+          onClick={(): void => {
+            setIsRegisterModal(true);
+          }}
+        >
+          Создать аккаунт
+        </Button>
       </div>
     </form>
   );

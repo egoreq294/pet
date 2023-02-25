@@ -2,19 +2,22 @@ import React, { FC, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { RegisterFormValues } from './types';
 import { yupResolver } from '@hookform/resolvers/yup';
-import styles from './styles.module.scss';
+import styles from '../styles.module.scss';
 import { Alert, Button, Input, Typography } from 'antd';
 import { useAuthContext } from '@app/contexts';
 import { registerSchema } from './registerSchema';
 import { register } from '@api/services';
 import { isAxiosError } from 'axios';
+import cn from 'classnames';
 
 interface RegisterFormProps {
-  setIsRegisterModalOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRegisterModal: React.Dispatch<React.SetStateAction<boolean>>;
+  onCloseModal: () => void;
 }
 
 export const RegisterForm: FC<RegisterFormProps> = ({
-  setIsRegisterModalOpened,
+  setIsRegisterModal,
+  onCloseModal,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +42,7 @@ export const RegisterForm: FC<RegisterFormProps> = ({
       const response = await register({ email, password, fullName });
       localStorage.setItem('access-token', response.data.accessToken);
       setIsAuth(true);
-      setIsRegisterModalOpened(false);
+      onCloseModal();
     } catch (e) {
       if (isAxiosError(e)) {
         setError(
@@ -122,11 +125,28 @@ export const RegisterForm: FC<RegisterFormProps> = ({
             <Alert message={error} type="error" showIcon />
           </div>
         )}
-        <div className={styles.InputContainer}>
-          <Button type="primary" block disabled={loading} htmlType="submit">
+
+        <div className={cn(styles.InputContainer, styles.SubmitButton)}>
+          <Button
+            type="primary"
+            block
+            disabled={loading}
+            size="large"
+            htmlType="submit"
+          >
             Зарегистироваться
           </Button>
         </div>
+        <Button
+          type="link"
+          disabled={loading}
+          size="small"
+          onClick={(): void => {
+            setIsRegisterModal(false);
+          }}
+        >
+          Уже есть аккаунт?
+        </Button>
       </div>
     </form>
   );

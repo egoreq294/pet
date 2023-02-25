@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { Link } from './Link';
 import styles from './styles.module.scss';
-import { Register } from '../Register';
-import { Auth } from '../Auth';
+
 import { UserAvatar } from '../UserAvatar';
 import { useAuthContext } from '@app/contexts';
+import { Login } from '../Login';
 
 export const Header: FC = () => {
   const { isAuth } = useAuthContext();
@@ -19,8 +19,7 @@ export const Header: FC = () => {
           <UserAvatar />
         ) : (
           <>
-            <Auth />
-            <Register />
+            <Login />
           </>
         )}
       </div>

@@ -2,7 +2,7 @@
 
 .Header { 
     background-color: $container-bg;
-    border-bottom: 1px solid $primary-border;
+    border-bottom: 1px solid $primary-text-hover;
     display: flex;
     justify-content: space-between;
     padding: 0 24px;
@@ -25,5 +25,5 @@
 }
 
 .ActiveLink {   
-    color: $primary-text-active;
+    color: $primary-text;
 }
