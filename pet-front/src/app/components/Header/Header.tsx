@@ -13,7 +13,6 @@ export const Header: FC = () => {
     <div className={styles.Header}>
       <div className={styles.Nav}>
         <Link to="/">Главная</Link>
-        <Link to="/sdfsdf">fdg</Link>
       </div>
       <div className={styles.User}>
         {isAuth ? (

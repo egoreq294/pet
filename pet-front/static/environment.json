@@ -1,1 +1,8 @@
-{}
+{
+    "graphql": {
+        "baseUrl": "http://localhost:5000/graphql"
+    },
+    "api": {
+        "baseUrl": "http://localhost:5050/api"
+    }
+}
