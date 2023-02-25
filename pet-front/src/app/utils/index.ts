@@ -1,0 +1,1 @@
+export { checkIsAuth } from './checkIsAuth';

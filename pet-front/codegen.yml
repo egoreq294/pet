@@ -1,0 +1,15 @@
+overweite: true
+schema:
+  - http://localhost:5000/graphql:
+      headers:
+        authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2FlZjNmZTY3MWRkMDZkZjExZjNhOTMiLCJpYXQiOjE2NzI0MjM4MzksImV4cCI6MTY3MjQyNTYzOX0.GIqoZKNN2Fr1ZQpeYKU0D9Ks1j8YMgtOiMt8wmFof_M
+documents:
+  - 'src/**/*.ts'
+  - 'src/**/*.tsx'
+generates:
+  src/app/graphql/types.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+    config:
+      constEnums: true

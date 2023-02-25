@@ -1,0 +1,29 @@
+@import '/src/app/styles/colors.scss';
+
+.Header { 
+    background-color: $container-bg;
+    border-bottom: 1px solid $primary-border;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.Nav, .User {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.Link {
+    text-decoration: none;
+    color: $secondary-text;
+}
+
+.LinkTitle{
+    color: inherit !important;
+    margin: 0;
+}
+
+.ActiveLink {   
+    color: $primary-text-active;
+}

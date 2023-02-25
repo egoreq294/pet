@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "declaration": false,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "outDir": "dist",
+    "lib": ["esnext", "dom"],
+    "baseUrl": "./",
+    "paths": {      
+      "@app/*": ["src/app/*"],
+      "@api/*": ["src/api/*"]
+    }
+  },
+  "exclude": ["dist", "node_modules"]
+}

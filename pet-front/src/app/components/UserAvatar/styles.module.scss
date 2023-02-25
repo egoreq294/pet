@@ -1,0 +1,13 @@
+@import '/src/app/styles/colors.scss';
+
+.Avatar {
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    &:hover {       
+        background-color: $primary-border-hover;
+    }
+}
+
+.Content {
+    width: 200px;
+}
