@@ -1,18 +1,18 @@
 import gql from "graphql-tag";
 
 export const userTypeDefs = gql`
-  input Test_Input {
-    email: String!
+  input EditMe_Input {
+    fullName: String
+    avatar: File_Input
   }
-  type Test_Output {
-    testString: String
+  type EditMe_Output {
     result: Mutation_Output
   }
 
   type GetUser_Output {
     fullName: String
     email: String
-    avatarUrl: String
+    avatar: File_Output
   }
 
   type Mutation_Output {
@@ -24,7 +24,7 @@ export const userTypeDefs = gql`
     getUser: GetUser_Output
   }
   type User_Mutations {
-    test(request: Test_Input!): Test_Output
+    editMe(request: EditMe_Input!): EditMe_Output
   }
 
   extend type Query {

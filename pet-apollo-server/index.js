@@ -40,7 +40,13 @@ mongoose
     return app.use(
       "/graphql",
       cors({ origin: "http://localhost:3000", credentials: true }),
-      bodyParser.json(),
+      bodyParser.json({ limit: "50mb", extended: true }),
+      bodyParser.urlencoded({
+        limit: "50mb",
+        extended: true,
+        parameterLimit: 50000,
+      }),
+      bodyParser.text({ limit: "200mb" }),
       cookieParser(),
       expressMiddleware(server, {
         context: async ({ req, res }) => {

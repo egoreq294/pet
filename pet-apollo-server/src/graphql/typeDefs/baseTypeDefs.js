@@ -8,4 +8,15 @@ export const baseTypeDefs = gql`
     OK
     ERROR
   }
+
+  input File_Input {
+    url: String
+    name: String
+    type: String
+  }
+
+  type File_Output {
+    url: String
+    name: String
+  }
 `;
