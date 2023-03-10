@@ -3,7 +3,7 @@ import { User } from "../../models/User.js";
 import { ApiError } from "../../exceptions/ApiError.js";
 import { generateTokens, saveToken } from "../tokenService/index.js";
 
-export const register = async ({ email, password, fullName, avatarUrl }) => {
+export const register = async ({ email, password, fullName }) => {
   const oldUser = await User.findOne({ email });
   if (oldUser) {
     throw ApiError.BadRequest("Пользователь с таким email уже существует");
@@ -16,7 +16,6 @@ export const register = async ({ email, password, fullName, avatarUrl }) => {
     email,
     fullName,
     passwordHash,
-    avatarUrl: avatarUrl || undefined,
   });
   const user = await doc.save();
 

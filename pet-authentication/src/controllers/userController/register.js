@@ -11,12 +11,11 @@ export const register = async (req, res, next) => {
       );
     }
 
-    const { email, password, fullName, avatarUrl } = req.body;
+    const { email, password, fullName } = req.body;
     const userData = await registerService({
       email,
       password,
       fullName,
-      avatarUrl,
     });
     res.cookie("refreshToken", userData.refreshToken, {
       maxAge: 30 * 24 * 60 * 60 * 1000,
